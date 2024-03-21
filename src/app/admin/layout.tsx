@@ -14,7 +14,7 @@ import {
     DrawerTitle,
 } from "@/components/ui/drawer"
 import { Heart, X } from "lucide-react";
-import AdminNavbar from '@/components/shared/admin/AdminNavbar';
+// import AdminNavbar from '@/components/shared/admin/AdminNavbar';
 import AdminMenu from "@/components/shared/admin/AdminMenu";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -23,8 +23,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
     children,
+    AdminNavbar,
+    
+    
 }: Readonly<{
     children: React.ReactNode;
+    AdminNavbar: React.ReactNode;
+ 
 }>) {
     const [currentRoute, setCurrentRoute] = useState<string>("dashboard");
     const changeCurrentRoute = (input: string): void => {
@@ -45,7 +50,8 @@ export default function RootLayout({
                 {/* for mobile view */}
                 <div className='block sm:hidden'>
                     <Drawer direction='left' >
-                        <AdminNavbar />
+                       { AdminNavbar }
+                        {/* <AdminNavbar /> */}
                         <DrawerContent>
                             <DrawerHeader>
                                 <DrawerTitle>
@@ -77,7 +83,7 @@ export default function RootLayout({
                                     <div className="p-4 mb-[50px]">
                                         {/* current route and path */}
                                         <div className="flex justify-between mb-2">
-                                            <h1 className="text-[24px]">{currentRoute}</h1>
+                                            {/* <h1 className="text-[24px]">{currentRoute}</h1> */}
                                             <div className="flex items-center">
                                                 <button className="text-orange-400 hover:text-orange-500 text-[14px] mr-2" onClick={() => router.push("/admin")}>Home</button>/
                                                 <p className="text-slate-400  text-[14px] ml-2">{currentRoute}</p>
@@ -98,11 +104,12 @@ export default function RootLayout({
                         </div>
                     </Provider> */}
                 </div>
-
+          
                 {/* for deskstop view */}
                 <div className='hidden sm:block h-[100svh] overflow-hidden'>
                     <Drawer>
-                        <AdminNavbar />
+                       { AdminNavbar }
+                        {/* <AdminNavbar /> */}
                         <div className='flex ' style={{ height: `calc(100svh - 62px)` }}>
                             <ScrollArea className="flex-1 border-s-stone-300 w-[20%] max-w-[250px] min-w-[250px] rounded-md border p-4 text-lg">
                                 <AdminMenu changeCurrentRoute={changeCurrentRoute} />

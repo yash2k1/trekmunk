@@ -1,8 +1,5 @@
 'use client'
-import React from 'react';
-import { Compass, Menu as MenuIcon, StickyNote, BarChartBig, CircleUserRound, SquareUserRound, Network, X, BellRing, LayoutDashboard, Building2, UsersRound, UserRoundCog, } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-// There are some object keys with ussage:
+
 interface MenuItem {
   title: "heading" | "button" | "option";
   name: string;
@@ -12,8 +9,7 @@ interface MenuItem {
   options?: MenuItem[];
   id: string,
 }
-
-export const AdminMenuData: MenuItem[] = [
+ const AdminMenuData: MenuItem[] = [
   // home
   {
     id: "1",
@@ -339,14 +335,14 @@ export const AdminMenuData: MenuItem[] = [
         id: "45",
         title: "button",
         name: "Media Management",
-        path: "/mediamanagement",
+        path: "/media",
         icon: "Image",
       },
       {
         id: "46",
         title: "button",
         name: "Product Management",
-        path: "/productmanagement",
+        path: "/product",
         icon: "UsersRound",
       },
       {
@@ -487,3 +483,4 @@ export const AdminMenuData: MenuItem[] = [
     ],
   },
 ];
+export default AdminMenuData;

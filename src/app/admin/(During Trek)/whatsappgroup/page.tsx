@@ -1,12 +1,6 @@
-
 import React from 'react'
-
-
-
-
 import { column,whatsAppGroup } from "./column"
 import { DataTable } from "@/components/shared/admin/Table resources/data-table"
-import { Input } from '@/components/ui/input';
 
 async function getData(): Promise<whatsAppGroup[]> {
   // Fetch data from your API here.

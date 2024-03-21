@@ -37,8 +37,6 @@ export default function stickyNote() {
     }
   ])
 
-  const options = ['bg-yellow-400', 'bg-green-500', 'bg-blue-300', 'bg-red-300', 'bg-orange-300', 'bg-pink-300', 'bg-purple-300', 'bg-indigo-300'];
-
   const changeData = (removeId: number) => {
     setData(data.filter((item: dataType) => item.id != removeId));
   }
@@ -54,7 +52,7 @@ export default function stickyNote() {
         {/* add notes */}
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger><Plus onClick={addNotes} /></TooltipTrigger>
+            <TooltipTrigger><Plus onClick={addNotes}  className='text-gray-300 hover:text-gray-500  transition duration-300'/></TooltipTrigger>
             <TooltipContent className='bg-orange-500 text-white'>
               <p >Add Sticky Note</p>
             </TooltipContent>
@@ -63,17 +61,17 @@ export default function stickyNote() {
 
       </div>
       {(data?.length === 0) ? <div className='font-bold w-full flex justify-center'>No Notes</div> :
-        <div className='grid grid-cols-1 lg:grid-cols-2'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 md:grid-cols-2'>
 
-          {data.map((item, index) => {
+          {data.map((item) => {
 
             return (
-              <div key={item.id} className={`m-3 `}>
-                <div key={item.id} className={`w-full h-8 pb-2 flex justify-end ${options[item.id % 8]} rounded-md rounded-b-none`}>
+              <div key={item.id} >
+                <div key={item.id} className={`w-full h-8 pb-2 flex justify-end bg-yellow-300 rounded-md rounded-b-none`}>
                  {/* confirm delete note popup  */}
                   <AlertDialog>
                     <AlertDialogTrigger asChild className='justify-self-end m-1 hover:cursor-pointer' >
-                      <X />
+                      <X className='text-gray-600 hover:text-black  transition duration-300'/>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
@@ -102,7 +100,7 @@ export default function stickyNote() {
                     );
                     setData(updatedData);
                   }}
-                  className={`min-h-56 ${options[item.id % 8]} text-black rounded-md  rounded-t-none placeholder:text-black focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-zinc-950 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50`}
+                  className={`min-h-56 bg-yellow-300 text-black rounded-md  rounded-t-none placeholder:text-black focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-zinc-950 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50`}
                 />
 
               </div>

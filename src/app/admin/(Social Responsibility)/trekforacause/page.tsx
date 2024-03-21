@@ -1,11 +1,6 @@
 import React from 'react'
-
-
-
-
 import { column,trekForCause } from "./column"
 import { DataTable } from "@/components/shared/admin/Table resources/data-table"
-import { Input } from '@/components/ui/input';
 
 async function getData(): Promise<trekForCause[]> {
   // Fetch data from your API here.
@@ -27,16 +22,12 @@ async function getData(): Promise<trekForCause[]> {
         trekName: generateRandomString(),
         amount: i*i*i,
         donatedBy: generateRandomString(),
-        Actions: generateRandomString(),
-       
+        Actions: generateRandomString(),       
       });
     }
   
     return entries;
   };
-  
-  // const generatedEntries = generateRandomEntries(40);
-  
 return generateRandomEntries(40)
 }
 
