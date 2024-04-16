@@ -1,9 +1,9 @@
 import React from 'react'
 import { column, productType } from "./column"
 import { DataTable } from "@/components/shared/admin/Table resources/data-table"
-
 import MediaHeader from '@/components/shared/admin/MediaHeader';
 import ImageGallery from '@/components/shared/admin/ImageGallery';
+import { redirect } from 'next/navigation'
 
 async function getData(): Promise<productType[]> {
   // Fetch data from your API here.
@@ -43,7 +43,8 @@ export default async function media({searchParams}:any) {
         (!searchParams?.event||searchParams?.event==="table") ? 
         <DataTable columns={column} data={data} />:
         // error page
-        <div>404</div>
+        redirect(`/not-found`) // Navigate to the new error page
+
       }
      
     </div>

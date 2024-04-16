@@ -1,6 +1,5 @@
-'use client'
 
-interface MenuItem {
+export interface MenuItem {
   title: "heading" | "button" | "option";
   name: string;
   routes?: MenuItem[];
@@ -158,7 +157,7 @@ interface MenuItem {
       {
         id: "21",
         title: "option",
-        name: "All Invoices Management",
+        name: "Invoices Management",
         icon: "ShoppingCart",
         options: [
           {

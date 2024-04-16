@@ -159,16 +159,17 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex justify-between items-center">
-        <div >Showing {pagination.pageSize * pagination.pageIndex + 1} to {pagination.pageSize * pagination.pageIndex + pagination.pageSize} of {table.getRowCount()} entries </div>
+      {/* footer */}
+      <div className="flex justify-between items-center text-sm sm:text-md flex-col sm:flex-row">
+
+        <div >Showing {(table.getRowCount())?pagination.pageSize * pagination.pageIndex + 1:0} to {Math.min(pagination.pageSize * pagination.pageIndex + pagination.pageSize,table.getRowCount())} of {table.getRowCount()} entries </div>
+
         {/* pagination */}
         <div className="flex items-center justify-end space-x-2 py-4 gap-2">
           Page
-
           <Button
             variant="outline"
-            size="sm"
-             className="p-0"
+             className="p-0 h-6 rounded-md px-1"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
@@ -177,8 +178,7 @@ export function DataTable<TData, TValue>({
           {pagination.pageIndex+1}
           <Button
             variant="outline"
-            size="sm"
-            className="p-0"
+            className="p-0 h-6 rounded-md px-1"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >

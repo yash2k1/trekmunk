@@ -13,7 +13,7 @@ const NotFoundPage: React.FC = () => {
         <p className="text-lg  sm:text-xl mb-12">
           The destination you're seeking seems to have wandered off the beaten path.
         </p>
-      
+
           <p className="text-lg" onClick={()=>router.push("/admin")}>
             Let's go on a journey and find your way back  <span className='underline text-blue-400 hover:text-blue-600 cursor-pointer'>home</span> . 
           </p>

@@ -33,7 +33,7 @@ export const column: ColumnDef<productType>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <img src={row.getValue("image")} alt="not found" className="cursor-pointer w-24 max-h-28"/>,
+    cell: ({ row }) => <img loading='lazy' src={row.getValue("image")} alt="not found" className="cursor-pointer w-24 max-h-28"/>,
   },
 
   // title 

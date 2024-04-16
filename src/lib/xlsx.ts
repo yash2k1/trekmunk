@@ -1,5 +1,5 @@
 import xlsx, { IJsonSheet } from "json-as-xlsx";
-import { data } from "@/app/admin/(After Trek)/mailinglist/page";
+import { data } from "@/app/admin/(main)/(After Trek)/mailinglist/page";
 
 export function downloadToExcel() {
   let columns: IJsonSheet[] = [

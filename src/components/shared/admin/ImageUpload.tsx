@@ -63,7 +63,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ image }) => {
             {imagePreview || image ? (
                 <img src={imagePreview || image} alt="Image Preview" className=" object-cover z-0 cursor-pointer h-full w-full " />
             ) : (
-                <span className=" z-0 cursor-pointer w-full text-center">Drop your photo here or browse your computer.</span>
+                <span className=" z-0 cursor-pointer w-full text-center text-sm sm:text-normal">Drop your photo here or browse your computer.</span>
             )}
         </div>
     );

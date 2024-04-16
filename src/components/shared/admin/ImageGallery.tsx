@@ -2,7 +2,15 @@
 import React, { useState } from 'react';
 import { Pencil, Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 interface ImageGalleryProps {
   images: string[];
 }
@@ -17,7 +25,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
   const handleMouseLeave = () => {
     setHoveredIndex(null);
   };
- const router=useRouter();
+  const router = useRouter();
   return (
     <div className="relative overflow-hidden p-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -25,10 +33,11 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
           <div
             key={index}
             className="relative "
-          
+
           >
             <div className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer h-fit group">
               <img
+                loading='lazy'
                 src={image}
                 alt={`Image ${index + 1}`}
                 className="relative overflow-hidden rounded-lg shadow-lg w-full h-auto transform group-hover:scale-105 transition-transform duration-300"
@@ -37,14 +46,14 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
               />
               {hoveredIndex === index && (
                 <div className="absolute bottom-6 w-full  flex items-center justify-center"
-                 onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseEnter={() => handleMouseEnter(index)}
                 >
                   <div className="flex space-x-4">
                     <button className="bg-white rounded-full p-2 hover:bg-red-500 hover:text-white transition-colors duration-300">
                       <Trash className="h-5 w-5" />
                     </button>
                     <button className="bg-white rounded-full p-2 hover:bg-orange-500 hover:text-white transition-colors duration-300">
-                      <Pencil className="h-5 w-5" onClick={()=>router.push(`/admin/media/edit/${4}`)} />
+                      <Pencil className="h-5 w-5" onClick={() => router.push(`/admin/media/edit/${4}`)} />
                     </button>
                   </div>
                 </div>
@@ -53,6 +62,31 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
           </div>
         ))}
       </div>
+      {/* pagination */}
+      <Pagination>
+        <PaginationContent className='my-4'>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" isActive>
+              2
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">3</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
 };
